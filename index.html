@@ -1,490 +1,586 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Conecta | Saúde Mental</title>
 
-```tsx
-"use client";
+    <link rel="stylesheet" href="style.css">
+</head>
 
-import { useState } from "react";
+<body>
 
-const emotions = [
-  { emoji: "😄", label: "Muito bem", value: 5 },
-  { emoji: "🙂", label: "Bem", value: 4 },
-  { emoji: "😐", label: "Neutro", value: 3 },
-  { emoji: "😔", label: "Mal", value: 2 },
-  { emoji: "😭", label: "Muito mal", value: 1 },
-];
+    <!-- ================= NAVBAR ================= -->
 
-const topics = [
-  {
-    emoji: "💙",
-    title: "Ansiedade",
-    description: "Entenda o que você está sentindo e descubra maneiras de lidar com a ansiedade.",
-    color: "bg-blue-50 dark:bg-blue-950/40",
-  },
-  {
-    emoji: "🌱",
-    title: "Tristeza",
-    description: "Informações para entender momentos difíceis e saber quando procurar ajuda.",
-    color: "bg-green-50 dark:bg-green-950/40",
-  },
-  {
-    emoji: "📚",
-    title: "Estresse escolar",
-    description: "Dicas para lidar com provas, notas, estudos e pressão escolar.",
-    color: "bg-purple-50 dark:bg-purple-950/40",
-  },
-  {
-    emoji: "🌙",
-    title: "Sono",
-    description: "Aprenda hábitos que podem ajudar você a dormir melhor.",
-    color: "bg-indigo-50 dark:bg-indigo-950/40",
-  },
-  {
-    emoji: "📱",
-    title: "Redes sociais",
-    description: "Reflita sobre sua relação com redes sociais e tecnologia.",
-    color: "bg-pink-50 dark:bg-pink-950/40",
-  },
-  {
-    emoji: "🤝",
-    title: "Quero conversar",
-    description: "Descubra como dar o primeiro passo para conversar com alguém.",
-    color: "bg-orange-50 dark:bg-orange-950/40",
-  },
-];
+    <header class="navbar">
 
-const exercises = [
-  {
-    emoji: "🌬️",
-    title: "Respiração guiada",
-    description: "Pare por alguns minutos e concentre-se na sua respiração.",
-  },
-  {
-    emoji: "🧘",
-    title: "Relaxamento",
-    description: "Um exercício rápido para diminuir a tensão do corpo.",
-  },
-  {
-    emoji: "🎧",
-    title: "Sons relaxantes",
-    description: "Coloque os fones, encontre um lugar tranquilo e respire.",
-  },
-];
+        <div class="logo">
+            <div class="logo-icon">💙</div>
 
-export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [selectedEmotion, setSelectedEmotion] = useState<number | null>(null);
-  const [showHelp, setShowHelp] = useState(false);
-
-  return (
-    <main className={darkMode ? "dark" : ""}>
-      <div className="min-h-screen bg-slate-50 text-slate-900 transition-colors dark:bg-slate-950 dark:text-white">
-
-        {/* NAVBAR */}
-        <nav className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/80">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-            <a href="#" className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-violet-500 text-xl shadow-lg shadow-blue-500/20">
-                💙
-              </div>
-
-              <div>
-                <h1 className="text-xl font-bold">Conecta</h1>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Um espaço para você
-                </p>
-              </div>
-            </a>
-
-            <div className="hidden items-center gap-8 md:flex">
-              <a href="#entenda" className="text-sm font-medium hover:text-blue-500">
-                Entenda
-              </a>
-
-              <a href="#ferramentas" className="text-sm font-medium hover:text-blue-500">
-                Ferramentas
-              </a>
-
-              <a href="#humor" className="text-sm font-medium hover:text-blue-500">
-                Meu humor
-              </a>
-
-              <button
-                onClick={() => setShowHelp(true)}
-                className="rounded-full bg-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-red-500/20 transition hover:bg-red-600"
-              >
-                Preciso de ajuda
-              </button>
-
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="rounded-full border border-slate-200 px-4 py-2 dark:border-slate-700"
-                aria-label="Alternar modo escuro"
-              >
-                {darkMode ? "☀️" : "🌙"}
-              </button>
+            <div>
+                <h1>Conecta</h1>
+                <span>Um espaço para você</span>
             </div>
+        </div>
 
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="rounded-full border border-slate-200 px-4 py-2 md:hidden dark:border-slate-700"
-            >
-              {darkMode ? "☀️" : "🌙"}
-            </button>
-          </div>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#entenda">Entenda</a>
+            <a href="#ferramentas">Ferramentas</a>
+            <a href="#humor">Meu humor</a>
+            <a href="#ajuda">Ajuda</a>
         </nav>
 
-        {/* HERO */}
-        <section className="relative overflow-hidden">
-          <div className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-blue-400/20 blur-3xl" />
-          <div className="absolute -right-32 top-20 h-96 w-96 rounded-full bg-purple-400/20 blur-3xl" />
+        <button class="theme-button" onclick="toggleTheme()">
+            🌙
+        </button>
 
-          <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:py-28">
+    </header>
 
-            <div>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 dark:border-blue-900 dark:bg-blue-950/50 dark:text-blue-300">
-                🌱 Um espaço feito para estudantes
-              </div>
 
-              <h2 className="max-w-3xl text-5xl font-black leading-tight tracking-tight sm:text-6xl">
-                Você não precisa passar por isso{" "}
-                <span className="bg-gradient-to-r from-blue-500 via-violet-500 to-purple-500 bg-clip-text text-transparent">
-                  sozinho.
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <span class="badge">
+                    🌱 Um espaço feito para estudantes
                 </span>
-              </h2>
 
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-                Ansiedade, tristeza, estresse e outros desafios podem acontecer
-                com qualquer estudante. Aqui você encontra informação,
-                ferramentas e caminhos para buscar ajuda quando precisar.
-              </p>
+                <h2>
+                    Você não precisa passar por isso
+                    <span>sozinho.</span>
+                </h2>
 
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href="#entenda"
-                  className="rounded-2xl bg-blue-600 px-6 py-4 font-bold text-white shadow-xl shadow-blue-600/20 transition hover:-translate-y-1 hover:bg-blue-700"
-                >
-                  Quero entender melhor →
-                </a>
+                <p>
+                    Ansiedade, tristeza, estresse e outros desafios
+                    podem acontecer com qualquer estudante.
+                    Aqui você encontra informação, ferramentas
+                    e caminhos para buscar ajuda quando precisar.
+                </p>
 
-                <button
-                  onClick={() => setShowHelp(true)}
-                  className="rounded-2xl border border-slate-200 bg-white px-6 py-4 font-bold transition hover:-translate-y-1 hover:border-red-300 dark:border-slate-700 dark:bg-slate-900"
-                >
-                  🆘 Preciso de ajuda
-                </button>
-              </div>
+                <div class="hero-buttons">
+
+                    <a href="#entenda" class="primary-button">
+                        Quero entender melhor →
+                    </a>
+
+                    <a href="#ajuda" class="secondary-button">
+                        🆘 Preciso de ajuda
+                    </a>
+
+                </div>
+
             </div>
 
-            <div className="relative">
-              <div className="rounded-[2rem] border border-white/60 bg-white/70 p-8 shadow-2xl shadow-blue-900/10 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/70">
-                <div className="mb-6 flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-slate-500">Como você está hoje?</p>
-                    <h3 className="mt-1 text-2xl font-bold">Seu bem-estar importa.</h3>
-                  </div>
 
-                  <span className="text-4xl">🌿</span>
+            <!-- CARD DE HUMOR -->
+
+            <div class="mood-card">
+
+                <div class="mood-header">
+
+                    <div>
+                        <p>Como você está hoje?</p>
+
+                        <h3>
+                            Seu bem-estar importa.
+                        </h3>
+                    </div>
+
+                    <span>🌿</span>
+
                 </div>
 
-                <div className="grid grid-cols-5 gap-2">
-                  {emotions.map((emotion) => (
-                    <button
-                      key={emotion.value}
-                      onClick={() => setSelectedEmotion(emotion.value)}
-                      className={`rounded-2xl p-3 text-center transition hover:-translate-y-1 ${
-                        selectedEmotion === emotion.value
-                          ? "bg-blue-100 ring-2 ring-blue-500 dark:bg-blue-900/50"
-                          : "bg-slate-50 dark:bg-slate-800"
-                      }`}
-                    >
-                      <div className="text-3xl">{emotion.emoji}</div>
-                      <div className="mt-2 text-[10px] font-medium text-slate-500 dark:text-slate-400">
-                        {emotion.label}
-                      </div>
+
+                <div class="emotions">
+
+                    <button onclick="selectMood(5, this)">
+                        <strong>😄</strong>
+                        <small>Muito bem</small>
                     </button>
-                  ))}
+
+                    <button onclick="selectMood(4, this)">
+                        <strong>🙂</strong>
+                        <small>Bem</small>
+                    </button>
+
+                    <button onclick="selectMood(3, this)">
+                        <strong>😐</strong>
+                        <small>Neutro</small>
+                    </button>
+
+                    <button onclick="selectMood(2, this)">
+                        <strong>😔</strong>
+                        <small>Mal</small>
+                    </button>
+
+                    <button onclick="selectMood(1, this)">
+                        <strong>😭</strong>
+                        <small>Muito mal</small>
+                    </button>
+
                 </div>
 
-                {selectedEmotion && (
-                  <div className="mt-5 rounded-2xl bg-green-50 p-4 text-sm text-green-800 dark:bg-green-950/40 dark:text-green-300">
+                <div id="mood-message" class="mood-message hidden">
                     💚 Obrigado por compartilhar como você está se sentindo.
-                    Você pode registrar isso no seu diário de humor.
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* QUICK ACTIONS */}
-        <section className="mx-auto max-w-7xl px-6 pb-20">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {[
-              ["💙", "Estou ansioso(a)", "#entenda"],
-              ["🌱", "Estou triste", "#entenda"],
-              ["🤝", "Quero conversar", "#ajuda"],
-              ["📚", "Estou sobrecarregado", "#entenda"],
-              ["🎧", "Quero relaxar", "#ferramentas"],
-            ].map(([emoji, title, link]) => (
-              <a
-                key={title}
-                href={link}
-                className="group rounded-3xl border border-slate-200 bg-white p-5 transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-900"
-              >
-                <span className="text-3xl">{emoji}</span>
-                <p className="mt-4 font-bold">{title}</p>
-                <p className="mt-2 text-sm text-slate-500 group-hover:text-blue-500">
-                  Saiba mais →
-                </p>
-              </a>
-            ))}
-          </div>
-        </section>
-
-        {/* ENTENDA */}
-        <section id="entenda" className="bg-white py-24 dark:bg-slate-900/50">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="max-w-2xl">
-              <p className="font-semibold text-blue-600">ENTENDA</p>
-              <h2 className="mt-3 text-4xl font-black">
-                O que você está sentindo?
-              </h2>
-              <p className="mt-4 text-slate-600 dark:text-slate-300">
-                Informação confiável pode ajudar você a compreender melhor
-                seus sentimentos e perceber quando é importante procurar ajuda.
-              </p>
-            </div>
-
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {topics.map((topic) => (
-                <article
-                  key={topic.title}
-                  className={`rounded-3xl p-7 transition hover:-translate-y-1 hover:shadow-xl ${topic.color}`}
-                >
-                  <div className="text-4xl">{topic.emoji}</div>
-
-                  <h3 className="mt-5 text-xl font-bold">{topic.title}</h3>
-
-                  <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">
-                    {topic.description}
-                  </p>
-
-                  <button className="mt-6 font-semibold text-blue-600">
-                    Explorar →
-                  </button>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FERRAMENTAS */}
-        <section id="ferramentas" className="py-24">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="text-center">
-              <p className="font-semibold text-purple-600">AUTOCUIDADO</p>
-              <h2 className="mt-3 text-4xl font-black">
-                Pequenos momentos para cuidar de você
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-slate-600 dark:text-slate-300">
-                Exercícios simples que você pode fazer quando precisar de
-                alguns minutos para respirar e desacelerar.
-              </p>
-            </div>
-
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {exercises.map((exercise) => (
-                <article
-                  key={exercise.title}
-                  className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
-                >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-100 text-3xl dark:bg-purple-950">
-                    {exercise.emoji}
-                  </div>
-
-                  <h3 className="mt-6 text-xl font-bold">{exercise.title}</h3>
-
-                  <p className="mt-3 leading-7 text-slate-600 dark:text-slate-300">
-                    {exercise.description}
-                  </p>
-
-                  <button className="mt-6 rounded-xl bg-slate-100 px-5 py-3 text-sm font-bold transition hover:bg-purple-100 dark:bg-slate-800 dark:hover:bg-purple-950">
-                    Começar exercício
-                  </button>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* HUMOR */}
-        <section id="humor" className="bg-gradient-to-br from-blue-600 to-violet-600 py-24 text-white">
-          <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="font-semibold text-blue-200">MEU BEM-ESTAR</p>
-
-              <h2 className="mt-3 text-4xl font-black">
-                Conheça seus próprios padrões.
-              </h2>
-
-              <p className="mt-5 max-w-xl leading-8 text-blue-100">
-                Registre como você está se sentindo ao longo dos dias e
-                acompanhe sua evolução. O diário é pessoal e pensado para
-                ajudar você a perceber padrões no seu bem-estar.
-              </p>
-
-              <button className="mt-8 rounded-2xl bg-white px-6 py-4 font-bold text-blue-700 shadow-xl transition hover:-translate-y-1">
-                Abrir meu diário →
-              </button>
-            </div>
-
-            <div className="rounded-[2rem] bg-white/10 p-8 backdrop-blur-xl">
-              <p className="text-sm text-blue-100">Exemplo de acompanhamento</p>
-
-              <div className="mt-8 flex h-48 items-end justify-between gap-3">
-                {[45, 65, 40, 75, 55, 85, 70].map((height, index) => (
-                  <div
-                    key={index}
-                    className="w-full rounded-t-xl bg-white/80 transition hover:bg-white"
-                    style={{ height: `${height}%` }}
-                  />
-                ))}
-              </div>
-
-              <div className="mt-4 flex justify-between text-xs text-blue-200">
-                <span>Seg</span>
-                <span>Ter</span>
-                <span>Qua</span>
-                <span>Qui</span>
-                <span>Sex</span>
-                <span>Sáb</span>
-                <span>Dom</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* AJUDA */}
-        <section id="ajuda" className="py-24">
-          <div className="mx-auto max-w-5xl px-6">
-            <div className="overflow-hidden rounded-[2rem] bg-slate-900 p-8 text-white shadow-2xl sm:p-12">
-              <div className="grid gap-10 md:grid-cols-2 md:items-center">
-                <div>
-                  <span className="text-5xl">🤝</span>
-
-                  <h2 className="mt-6 text-4xl font-black">
-                    Às vezes, o primeiro passo é conversar.
-                  </h2>
-
-                  <p className="mt-5 leading-7 text-slate-300">
-                    Você não precisa resolver tudo sozinho. Conversar com uma
-                    pessoa de confiança pode ser um começo importante.
-                  </p>
                 </div>
 
-                <div className="space-y-3">
-                  {[
-                    "👩‍🏫 Conversar com um professor",
-                    "🏫 Procurar a orientação escolar",
-                    "👨‍👩‍👧 Conversar com um familiar",
-                    "🧠 Procurar um profissional",
-                  ].map((item) => (
-                    <button
-                      key={item}
-                      className="w-full rounded-2xl bg-white/10 p-5 text-left font-semibold transition hover:bg-white/20"
-                    >
-                      {item}
+            </div>
+
+        </section>
+
+
+        <!-- ================= ATALHOS ================= -->
+
+        <section class="quick-actions">
+
+            <a href="#entenda" class="quick-card">
+                <span>💙</span>
+                <h3>Estou ansioso(a)</h3>
+                <p>Entender a ansiedade</p>
+            </a>
+
+            <a href="#entenda" class="quick-card">
+                <span>🌱</span>
+                <h3>Estou triste</h3>
+                <p>Entender meus sentimentos</p>
+            </a>
+
+            <a href="#ajuda" class="quick-card">
+                <span>🤝</span>
+                <h3>Quero conversar</h3>
+                <p>Encontrar alguém para ajudar</p>
+            </a>
+
+            <a href="#entenda" class="quick-card">
+                <span>📚</span>
+                <h3>Estou sobrecarregado</h3>
+                <p>Lidar com o estresse escolar</p>
+            </a>
+
+            <a href="#ferramentas" class="quick-card">
+                <span>🎧</span>
+                <h3>Quero relaxar</h3>
+                <p>Exercícios rápidos</p>
+            </a>
+
+        </section>
+
+
+        <!-- ================= ENTENDA ================= -->
+
+        <section class="section" id="entenda">
+
+            <div class="section-header">
+
+                <span>ENTENDA</span>
+
+                <h2>
+                    O que você está sentindo?
+                </h2>
+
+                <p>
+                    Informação pode ajudar você a compreender melhor
+                    seus sentimentos e perceber quando é importante
+                    procurar ajuda.
+                </p>
+
+            </div>
+
+
+            <div class="topic-grid">
+
+                <article class="topic-card blue">
+
+                    <span>💙</span>
+
+                    <h3>Ansiedade</h3>
+
+                    <p>
+                        Entenda o que é ansiedade, seus sintomas
+                        e algumas formas de lidar com ela.
+                    </p>
+
+                    <button onclick="openTopic('ansiedade')">
+                        Explorar →
                     </button>
-                  ))}
 
-                  <button
-                    onClick={() => setShowHelp(true)}
-                    className="w-full rounded-2xl bg-red-500 p-5 font-bold transition hover:bg-red-600"
-                  >
-                    🆘 Preciso de ajuda agora
-                  </button>
-                </div>
-              </div>
+                </article>
+
+
+                <article class="topic-card green">
+
+                    <span>🌱</span>
+
+                    <h3>Tristeza</h3>
+
+                    <p>
+                        Entenda momentos difíceis e descubra
+                        quando pode ser importante pedir ajuda.
+                    </p>
+
+                    <button onclick="openTopic('tristeza')">
+                        Explorar →
+                    </button>
+
+                </article>
+
+
+                <article class="topic-card purple">
+
+                    <span>📚</span>
+
+                    <h3>Estresse escolar</h3>
+
+                    <p>
+                        Provas, notas, vestibular e pressão
+                        podem ser difíceis. Veja algumas estratégias.
+                    </p>
+
+                    <button onclick="openTopic('estresse')">
+                        Explorar →
+                    </button>
+
+                </article>
+
+
+                <article class="topic-card indigo">
+
+                    <span>🌙</span>
+
+                    <h3>Sono</h3>
+
+                    <p>
+                        Conheça hábitos que podem ajudar
+                        a melhorar sua rotina de sono.
+                    </p>
+
+                    <button onclick="openTopic('sono')">
+                        Explorar →
+                    </button>
+
+                </article>
+
+
+                <article class="topic-card pink">
+
+                    <span>📱</span>
+
+                    <h3>Redes sociais</h3>
+
+                    <p>
+                        Reflita sobre sua relação com redes
+                        sociais e tecnologia.
+                    </p>
+
+                    <button onclick="openTopic('redes')">
+                        Explorar →
+                    </button>
+
+                </article>
+
+
+                <article class="topic-card orange">
+
+                    <span>🤝</span>
+
+                    <h3>Quero conversar</h3>
+
+                    <p>
+                        Descubra como dar o primeiro passo
+                        para conversar com alguém.
+                    </p>
+
+                    <button onclick="openTopic('conversa')">
+                        Explorar →
+                    </button>
+
+                </article>
+
             </div>
-          </div>
+
         </section>
 
-        {/* FOOTER */}
-        <footer className="border-t border-slate-200 py-10 dark:border-slate-800">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="flex flex-col justify-between gap-6 md:flex-row">
-              <div>
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">💙</span>
-                  <span className="text-xl font-bold">Conecta</span>
-                </div>
 
-                <p className="mt-3 max-w-md text-sm text-slate-500">
-                  Um espaço seguro para cuidar da sua saúde mental.
+        <!-- ================= FERRAMENTAS ================= -->
+
+        <section class="section tools-section" id="ferramentas">
+
+            <div class="section-header center">
+
+                <span>AUTOCUIDADO</span>
+
+                <h2>
+                    Pequenos momentos para cuidar de você
+                </h2>
+
+                <p>
+                    Exercícios simples para você fazer quando
+                    precisar respirar e desacelerar.
                 </p>
-              </div>
 
-              <div className="max-w-md text-sm text-slate-500">
-                <strong className="text-slate-700 dark:text-slate-300">
-                  Importante:
-                </strong>{" "}
-                este site oferece informação e apoio inicial. Ele não substitui
-                atendimento ou acompanhamento realizado por profissionais de
-                saúde.
-              </div>
             </div>
 
-            <div className="mt-8 border-t border-slate-200 pt-6 text-xs text-slate-500 dark:border-slate-800">
-              Projeto desenvolvido para a comunidade escolar.
-            </div>
-          </div>
-        </footer>
 
-        {/* MODAL DE AJUDA */}
-        {showHelp && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-6 backdrop-blur-sm">
-            <div className="w-full max-w-lg rounded-[2rem] bg-white p-8 shadow-2xl dark:bg-slate-900">
-              <div className="flex items-start justify-between">
+            <div class="tools-grid">
+
+                <article class="tool-card">
+
+                    <div class="tool-icon">
+                        🌬️
+                    </div>
+
+                    <h3>
+                        Respiração guiada
+                    </h3>
+
+                    <p>
+                        Pare por alguns minutos e concentre-se
+                        na sua respiração.
+                    </p>
+
+                    <button onclick="startBreathing()">
+                        Começar exercício
+                    </button>
+
+                </article>
+
+
+                <article class="tool-card">
+
+                    <div class="tool-icon">
+                        🧘
+                    </div>
+
+                    <h3>
+                        Relaxamento
+                    </h3>
+
+                    <p>
+                        Um exercício rápido para diminuir
+                        a tensão do corpo.
+                    </p>
+
+                    <button onclick="startRelaxation()">
+                        Começar exercício
+                    </button>
+
+                </article>
+
+
+                <article class="tool-card">
+
+                    <div class="tool-icon">
+                        🎧
+                    </div>
+
+                    <h3>
+                        Sons relaxantes
+                    </h3>
+
+                    <p>
+                        Encontre um lugar tranquilo,
+                        coloque os fones e respire.
+                    </p>
+
+                    <button onclick="showMessage('Em breve teremos sons relaxantes aqui!')">
+                        Ouvir
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DIÁRIO ================= -->
+
+        <section class="mood-section" id="humor">
+
+            <div class="mood-content">
+
                 <div>
-                  <span className="text-4xl">🆘</span>
-                  <h2 className="mt-4 text-2xl font-black">
-                    Você não está sozinho.
-                  </h2>
+
+                    <span>MEU BEM-ESTAR</span>
+
+                    <h2>
+                        Conheça seus próprios padrões.
+                    </h2>
+
+                    <p>
+                        Registre como você está se sentindo ao longo
+                        dos dias e acompanhe sua evolução.
+                    </p>
+
+                    <button onclick="openDiary()">
+                        Abrir meu diário →
+                    </button>
+
                 </div>
 
-                <button
-                  onClick={() => setShowHelp(false)}
-                  className="rounded-full bg-slate-100 px-4 py-2 dark:bg-slate-800"
-                >
-                  ✕
-                </button>
-              </div>
 
-              <p className="mt-5 leading-7 text-slate-600 dark:text-slate-300">
-                Se você sente que precisa de ajuda, procure um adulto de
-                confiança. Pode ser um professor, orientador, familiar ou
-                profissional de saúde.
-              </p>
+                <div class="chart">
 
-              <div className="mt-6 space-y-3">
-                <button className="w-full rounded-2xl bg-blue-600 p-4 font-bold text-white">
-                  👩‍🏫 Procurar orientação na escola
-                </button>
+                    <p>
+                        Exemplo de acompanhamento
+                    </p>
 
-                <button className="w-full rounded-2xl bg-green-600 p-4 font-bold text-white">
-                  🤝 Conversar com alguém de confiança
-                </button>
-              </div>
+                    <div class="bars">
 
-              <p className="mt-6 text-xs leading-5 text-slate-500">
-                Em uma versão final, esta área deve conter os contatos e
-                serviços de apoio oficialmente definidos pela escola.
-              </p>
+                        <div style="height:45%"></div>
+                        <div style="height:65%"></div>
+                        <div style="height:40%"></div>
+                        <div style="height:75%"></div>
+                        <div style="height:55%"></div>
+                        <div style="height:85%"></div>
+                        <div style="height:70%"></div>
+
+                    </div>
+
+                    <div class="days">
+
+                        <span>Seg</span>
+                        <span>Ter</span>
+                        <span>Qua</span>
+                        <span>Qui</span>
+                        <span>Sex</span>
+                        <span>Sáb</span>
+                        <span>Dom</span>
+
+                    </div>
+
+                </div>
+
             </div>
-          </div>
-        )}
-      </div>
+
+        </section>
+
+
+        <!-- ================= AJUDA ================= -->
+
+        <section class="help-section" id="ajuda">
+
+            <div class="help-container">
+
+                <div class="help-text">
+
+                    <span>🤝</span>
+
+                    <h2>
+                        Às vezes, o primeiro passo é conversar.
+                    </h2>
+
+                    <p>
+                        Você não precisa resolver tudo sozinho.
+                        Conversar com uma pessoa de confiança
+                        pode ser um começo importante.
+                    </p>
+
+                </div>
+
+
+                <div class="help-options">
+
+                    <button onclick="showMessage('Procure um professor de confiança.')">
+                        👩‍🏫 Conversar com um professor
+                    </button>
+
+                    <button onclick="showMessage('Procure a orientação da sua escola.')">
+                        🏫 Procurar orientação escolar
+                    </button>
+
+                    <button onclick="showMessage('Converse com um familiar ou responsável de confiança.')">
+                        👨‍👩‍👧 Conversar com um familiar
+                    </button>
+
+                    <button onclick="showMessage('Procure um profissional de saúde qualificado.')">
+                        🧠 Procurar um profissional
+                    </button>
+
+                    <button class="emergency" onclick="showHelpModal()">
+                        🆘 Preciso de ajuda agora
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
     </main>
-  );
-}
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+
+                <div class="footer-logo">
+                    💙 Conecta
+                </div>
+
+                <p>
+                    Um espaço seguro para cuidar
+                    da sua saúde mental.
+                </p>
+
+            </div>
+
+
+            <div class="disclaimer">
+
+                <strong>Importante:</strong>
+
+                Este site oferece informação e apoio inicial.
+                Ele não substitui atendimento ou acompanhamento
+                realizado por profissionais de saúde.
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            Projeto desenvolvido para a comunidade escolar.
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div id="modal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <button class="close" onclick="closeModal()">
+                ✕
+            </button>
+
+            <div id="modal-body"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
 ```
+
+
+
