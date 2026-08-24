@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fala da Merenda | Portal de Escuta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <div class="container">
+    <header>
+      <div class="badge">Sua voz importa! 🍎</div>
+      <h1>Fala da <span>Merenda</span></h1>
+      <p>O rango de hoje tava bom ou deixou a desejar? Conta pra gente!</p>
+    </header>
+
+    <main class="card">
+      <form id="feedbackForm">
+        
+        <!-- Seleção do Prato -->
+        <div class="input-group">
+          <label for="prato">O que serviram hoje?</label>
+          <input type="text" id="prato" placeholder="Ex: Arroz, feijão e frango xadrez" required>
+        </div>
+
+        <!-- Avaliação por Estrelas -->
+        <div class="input-group">
+          <label>Qual sua nota pro rango?</label>
+          <div class="star-rating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+          <input type="hidden" id="nota" value="0" required>
+        </div>
+
+        <!-- Tags de Resumo Rápido -->
+        <div class="input-group">
+          <label>Resuma em uma palavra:</label>
+          <div class="tags-container">
+            <button type="button" class="tag-btn">🔥 Delicioso</button>
+            <button type="button" class="tag-btn">👍 Ok/Normal</button>
+            <button type="button" class="tag-btn">❄️ Veio Frio</button>
+            <button type="button" class="tag-btn">🧂 Sem Sal</button>
+            <button type="button" class="tag-btn">➕ Quero Mais</button>
+          </div>
+        </div>
+
+        <!-- Comentário -->
+        <div class="input-group">
+          <label for="comentario">Manda a real (sugestões, elogios, críticas):</label>
+          <textarea id="comentario" rows="4" placeholder="Escreva aqui sua opinião sincera..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Opinião 🚀</button>
+      </form>
+    </main>
+
+    <!-- Seção de Feedbacks Enviados -->
+    <section class="feedbacks-section">
+      <h2>O que a galera tá falando 👇</h2>
+      <div id="feedbacksList" class="feedbacks-list">
+        <!-- Feedbacks aparecem aqui via JS -->
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
